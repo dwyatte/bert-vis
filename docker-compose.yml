@@ -28,7 +28,7 @@ services:
       - .:/host
     environment:
       - INPUT_FILES=/host/a.txt /host/b.txt
-      - MAX_SENTENCES_PER_FILE=5
+      - MAX_SENTENCES_PER_FILE=500
     ports:
       - "5006:5006"
 

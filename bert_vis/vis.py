@@ -12,7 +12,7 @@ class Visualization:
     def __init__(self):
         # widgets
         self.instructions = Paragraph(text='Enter a word')
-        self.text_input = TextInput(value='""')
+        self.text_input = TextInput(value='')
         self.submit_button = Button(label='Submit', button_type="success")
         self.figure = Figure()
         self.projector = UMAP()
@@ -43,10 +43,9 @@ class Visualization:
         ))
 
         figure = Figure(tooltips=[('text', '@text')])
-        figure.circle('x', 'y', fill_color='fill_color', radius=.05, line_color=None, source=source)
+        figure.circle('x', 'y', fill_color='fill_color', radius=0.1, line_color=None, source=source)
         self.layout.children[-1] = figure
 
 
 visualization = Visualization()
 curdoc().add_root(visualization.layout)
-
