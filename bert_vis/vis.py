@@ -16,10 +16,13 @@ class Visualization:
         self.submit_button = Button(label='Submit', button_type="success")
         self.figure = Figure()
         self.projector = UMAP()
-        self.layout = column(self.instructions,
-                             self.text_input,
-                             self.submit_button,
-                             self.figure)
+        self.layout = column(column(self.instructions,
+                                    self.text_input,
+                                    self.submit_button,
+                                    sizing_mode='fixed'),
+                             column(self.figure,
+                                    sizing_mode='stretch_both'),
+                             sizing_mode='stretch_both')
 
         self.submit_button.on_click(self.handle_submit)
 
@@ -44,7 +47,7 @@ class Visualization:
 
         figure = Figure(tooltips=[('text', '@text')])
         figure.circle('x', 'y', fill_color='fill_color', radius=0.1, line_color=None, source=source)
-        self.layout.children[-1] = figure
+        self.layout.children[-1] = column(figure, sizing_mode='stretch_both')
 
 
 visualization = Visualization()
