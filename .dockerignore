@@ -1,0 +1,10 @@
+**/__pycache__
+*.pyc
+.pytest_cache
+.DS_Store
+
+*.md
+.vscode
+.root
+tests
+results.xml

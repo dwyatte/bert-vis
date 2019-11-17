@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+
+  bert-server:
+    build:
+      context: bert_server
+      args:
+        dev: "true"
+    volumes:
+      - .:/host
+    environment:
+      - MODEL_DIR=/host/uncased_L-12_H-768_A-12
+      - CKPT_NAME=bert_model.ckpt
+      - NUM_WORKER=1
+    ports:
+      - "5555:5555"
+      - "5556:5556"
+
+  bert-vis:
+    build:
+      context: bert_vis
+      args:
+        dev: "true"
+    links:
+      - bert-server:bert-server
+    volumes:
+      - .:/host
+    environment:
+      - INPUT_FILES=/host/reddit.txt /host/metacritic.txt
+      - MAX_SENTENCES_PER_FILE=5
+    ports:
+      - "5006:5006"
+
+volumes:
+  .:
