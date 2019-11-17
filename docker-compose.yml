@@ -5,8 +5,6 @@ services:
   bert-server:
     build:
       context: bert_server
-      args:
-        dev: "true"
     volumes:
       - .:/host
     environment:
@@ -20,14 +18,12 @@ services:
   bert-vis:
     build:
       context: bert_vis
-      args:
-        dev: "true"
     links:
       - bert-server:bert-server
     volumes:
       - .:/host
     environment:
-      - INPUT_FILES=/host/a.txt /host/b.txt
+      - INPUT_FILES=/host/like_most.txt /host/do_better.txt /host/future.txt
       - MAX_SENTENCES_PER_FILE=500
     ports:
       - "5006:5006"
