@@ -27,7 +27,7 @@ services:
     volumes:
       - .:/host
     environment:
-      - INPUT_FILES=/host/reddit.txt /host/metacritic.txt
+      - INPUT_FILES=/host/a.txt /host/b.txt
       - MAX_SENTENCES_PER_FILE=5
     ports:
       - "5006:5006"
