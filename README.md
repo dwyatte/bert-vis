@@ -1,3 +1,3 @@
 # bert-vis
 
-short desc
+![](screenshot.gif)

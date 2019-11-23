@@ -32,6 +32,12 @@ class Visualization:
         encodings = utils.get_encodings(sentences)
         embedding = self.projector.fit_transform(encodings)
 
+        subsentences = []
+        for sentence in sentences:
+            index = sentence.lower().index(self.text_input.value)
+            subsentence = sentence[max(index-50, 0):min(index+50, len(sentence))]
+            subsentences.append('...' + subsentence + '...')
+
         filename_to_color = dict()
         for filename, _ in filename_sentence_pairs:
             if filename not in filename_to_color:
@@ -41,12 +47,12 @@ class Visualization:
         source = ColumnDataSource(data=dict(
             x=embedding[:, 0],
             y=embedding[:, 1],
-            text=sentences,
+            text=subsentences,
             fill_color=color
         ))
 
         figure = Figure(tooltips=[('text', '@text')])
-        figure.circle('x', 'y', fill_color='fill_color', radius=0.1, line_color=None, source=source)
+        figure.circle('x', 'y', fill_color='fill_color', radius=0.05, line_color=None, source=source)
         self.layout.children[-1] = column(figure, sizing_mode='stretch_both')
 
 

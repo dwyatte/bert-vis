@@ -23,7 +23,7 @@ services:
     volumes:
       - .:/host
     environment:
-      - INPUT_FILES=/host/like_most.txt /host/do_better.txt /host/future.txt
+      - INPUT_FILES=/host/reviews_video_games.txt /host/reviews_toys_and_games.txt
       - MAX_SENTENCES_PER_FILE=500
     ports:
       - "5006:5006"
