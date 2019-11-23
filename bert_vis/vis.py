@@ -4,10 +4,12 @@ from bokeh.plotting import Figure, curdoc, ColumnDataSource
 from bokeh.models.widgets import Paragraph, TextInput, Button
 
 import utils
+import settings
 
 class Visualization:
 
-    COLORS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
+    COLORS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+              '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
 
     def __init__(self):
         # widgets
@@ -32,11 +34,14 @@ class Visualization:
         encodings = utils.get_encodings(sentences)
         embedding = self.projector.fit_transform(encodings)
 
-        subsentences = []
+        tooltip_sentences = []
         for sentence in sentences:
             index = sentence.lower().index(self.text_input.value)
-            subsentence = sentence[max(index-50, 0):min(index+50, len(sentence))]
-            subsentences.append('...' + subsentence + '...')
+            subsentence = sentence[max(index-settings.TEXT_TOOLTIP_WINDOW_SIZE, 0):\
+                                   min(settings.TEXT_TOOLTIP_WINDOW_SIZE+index, len(sentence))]
+            if len(subsentence) < len(sentence):
+                subsentence = '...' + subsentence + '...'
+            tooltip_sentences.append(subsentence)
 
         filename_to_color = dict()
         for filename, _ in filename_sentence_pairs:
@@ -47,7 +52,7 @@ class Visualization:
         source = ColumnDataSource(data=dict(
             x=embedding[:, 0],
             y=embedding[:, 1],
-            text=subsentences,
+            text=tooltip_sentences,
             fill_color=color
         ))
 

@@ -24,6 +24,7 @@ services:
       - .:/host
     environment:
       - INPUT_FILES=/host/reviews_video_games.txt /host/reviews_toys_and_games.txt
+      - TEXT_TOOLTIP_WINDOW_SIZE=50
       - MAX_SENTENCES_PER_FILE=500
     ports:
       - "5006:5006"

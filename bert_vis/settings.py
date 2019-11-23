@@ -1,3 +1,4 @@
 import os
 
 MAX_SENTENCES_PER_FILE = os.environ.get('MAX_SENTENCES_PER_FILE', '500')
+TEXT_TOOLTIP_WINDOW_SIZE = int(os.environ.get('TEXT_TOOLTIP_WINDOW_SIZE', 50))
