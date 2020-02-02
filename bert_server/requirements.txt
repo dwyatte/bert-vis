@@ -2,7 +2,8 @@ absl-py==0.8.1
 asn1crypto==0.24.0
 astor==0.8.0
 bert-serving-server==1.9.8
-cryptography==2.1.4
+cffi==1.13.2
+cryptography==2.3
 gast==0.3.2
 google-pasta==0.1.8
 GPUtil==1.4.0
@@ -16,6 +17,7 @@ keyrings.alt==3.0
 Markdown==3.1.1
 numpy==1.17.4
 protobuf==3.10.0
+pycparser==2.19
 pycrypto==2.6.1
 pygobject==3.26.1
 pyxdg==0.25
