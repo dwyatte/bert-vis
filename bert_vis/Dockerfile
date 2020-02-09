@@ -4,9 +4,10 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip
 
-COPY requirements.txt .
+RUN pip3 install pip --upgrade
 
-RUN pip3 install -r requirements.txt && rm requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt && rm requirements.txt
 
 COPY *.py /bert_vis/
 
