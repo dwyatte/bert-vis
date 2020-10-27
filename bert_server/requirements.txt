@@ -3,7 +3,7 @@ asn1crypto==0.24.0
 astor==0.8.0
 bert-serving-server==1.9.8
 cffi==1.13.2
-cryptography==2.3
+cryptography==3.2
 gast==0.3.2
 google-pasta==0.1.8
 GPUtil==1.4.0
