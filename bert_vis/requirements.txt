@@ -4,7 +4,7 @@ bokeh==1.4.0
 cffi==1.13.2
 cryptography==2.3
 idna==2.6
-Jinja2==2.10.3
+Jinja2==2.11.3
 joblib==0.14.0
 keyring==10.6.0
 keyrings.alt==3.0
